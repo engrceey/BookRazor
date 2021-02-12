@@ -26,6 +26,7 @@ namespace BookStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(option => 
                                 option.UseSqlite(Configuration.GetConnectionString("Sqlite")));
@@ -54,6 +55,7 @@ namespace BookStore
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }
